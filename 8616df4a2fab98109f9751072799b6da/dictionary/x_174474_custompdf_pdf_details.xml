@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="pdf details" max_length="40" name="x_174474_custompdf_pdf_details" sizeclass="16" type="collection">
+        <element attributes="edge_encryption_enabled=true" label="Attachment" max_length="40" name="attachment" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Description" max_length="1000" name="description" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Header" max_length="100" name="header" type="string"/>
+        <element attributes="encode_utf8=false" label="Table" max_length="32" name="table" reference="sys_db_object" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Type" max_length="40" name="type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Display from existing" value="display_from_existing"/>
+                <element inactive_on_update="false" label="Display from Table" value="display_from_table"/>
+            </choice>
+        </element>
+        <index name="index">
+            <element name="table"/>
+        </index>
+    </element>
+</database>

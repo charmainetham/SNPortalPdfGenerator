@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_sp_widget_dependency">
+    <m2m_sp_widget_dependency action="DELETE">
+        <sp_dependency display_value="pdfMake">4944994b2f6b50109f9751072799b608</sp_dependency>
+        <sp_widget display_value="attachment creator">7ee88b522f2310109f9751072799b699</sp_widget>
+        <sys_class_name>m2m_sp_widget_dependency</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-10-03 20:40:11</sys_created_on>
+        <sys_id>f574194b2f6b50109f9751072799b690</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>pdfMake.attachment creator</sys_name>
+        <sys_package display_value="custompdf" source="x_174474_custompdf">8616df4a2fab98109f9751072799b6da</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="custompdf">8616df4a2fab98109f9751072799b6da</sys_scope>
+        <sys_update_name>m2m_sp_widget_dependency_f574194b2f6b50109f9751072799b690</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-10-03 20:40:11</sys_updated_on>
+    </m2m_sp_widget_dependency>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="custompdf">8616df4a2fab98109f9751072799b6da</application>
+        <file_path/>
+        <instance_id>eb2f46b89bb78b04bb2e6b8af359ff58</instance_id>
+        <instance_name>dev47795</instance_name>
+        <name>m2m_sp_widget_dependency_f574194b2f6b50109f9751072799b690</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_sp_widget_dependency"><m2m_sp_widget_dependency action="INSERT_OR_UPDATE"><sp_dependency display_value="pdfMake">4944994b2f6b50109f9751072799b608</sp_dependency><sp_widget display_value="attachment creator">7ee88b522f2310109f9751072799b699</sp_widget><sys_class_name>m2m_sp_widget_dependency</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2020-10-03 20:40:11</sys_created_on><sys_id>f574194b2f6b50109f9751072799b690</sys_id><sys_mod_count>0</sys_mod_count><sys_name>pdfMake.attachment creator</sys_name><sys_package display_value="custompdf" source="x_174474_custompdf">8616df4a2fab98109f9751072799b6da</sys_package><sys_policy/><sys_scope display_value="custompdf">8616df4a2fab98109f9751072799b6da</sys_scope><sys_update_name>m2m_sp_widget_dependency_f574194b2f6b50109f9751072799b690</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2020-10-03 20:40:11</sys_updated_on></m2m_sp_widget_dependency></record_update>]]></payload>
+        <payload_hash>-1982296861</payload_hash>
+        <record_name>pdfMake.attachment creator</record_name>
+        <reverted_from/>
+        <source>b913ef822feb98109f9751072799b629</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-10-03 20:40:11</sys_created_on>
+        <sys_id>71741d4b2f6b50109f9751072799b606</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>174f031851e0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-10-03 20:40:11</sys_updated_on>
+        <type>Widget Dependency</type>
+        <update_guid>b9741d4b4f6b50105e442ffb88d6eb05</update_guid>
+        <update_guid_history>b9741d4b4f6b50105e442ffb88d6eb05:-1982296861</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="pdfMake.attachment creator">cece59832fab50109f9751072799b6ea</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-10-03 21:25:15</sys_created_on>
+        <sys_db_object display_value="" name="m2m_sp_widget_dependency">m2m_sp_widget_dependency</sys_db_object>
+        <sys_id>4fcccbd3e83a41809a229bf7fbf40400</sys_id>
+        <sys_metadata>f574194b2f6b50109f9751072799b690</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>pdfMake.attachment creator</sys_name>
+        <sys_package display_value="custompdf" source="x_174474_custompdf">8616df4a2fab98109f9751072799b6da</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="custompdf">8616df4a2fab98109f9751072799b6da</sys_scope>
+        <sys_scope_delete display_value="">004392a02fa04b70b6ff16c5288ae390</sys_scope_delete>
+        <sys_update_name>m2m_sp_widget_dependency_f574194b2f6b50109f9751072799b690</sys_update_name>
+        <sys_update_version display_value="m2m_sp_widget_dependency_f574194b2f6b50109f9751072799b690">71741d4b2f6b50109f9751072799b606</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-10-03 21:25:15</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
