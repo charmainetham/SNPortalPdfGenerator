@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function($rootScope) {
+	/* widget controller */
+	var c = this;
+	c.base64string = "";
+	var dd = "";
+
+	/*	var dd = {
+		content: [
+			{text: 'Tables', style: 'header'},
+			'Official documentation is in progress, this document is just a glimpse of what is possible with pdfmake and its layout engine.'
+
+		],
+		styles: {
+			header: {
+				fontSize: 18,
+				bold: true,
+				margin: [0, 0, 0, 10]
+			},
+			subheader: {
+				fontSize: 16,
+				bold: true,
+				margin: [0, 10, 0, 5]
+			},
+			tableExample: {
+				margin: [0, 5, 0, 15]
+			},
+			tableHeader: {
+				bold: true,
+				fontSize: 13,
+				color: 'black'
+			}
+		},
+		defaultStyle: {
+			// alignment: 'justify'
+		}
+
+	}*/
+
+
+	function buildTableBody(datum, columns) {
+		var body = [];
+		body.push(columns);
+
+		datum.forEach(function(row) {
+			var dataRow = [];
+
+			columns.forEach(function(column) {
+				dataRow.push(row[column.text]);
+			})
+			body.push(dataRow);
+		});
+		return body;
+	}
+
+	function table(datum, columns) {
+		if(datum) {
+			return {
+				table: {
+					headerRows: 1,
+					body: buildTableBody(datum, columns)
+				}
+			};	
+		}
+	}
+
+	c.getTableInfo = function() {
+
+		c.data.getTableInfo = true;
+		c.server.update().then(function(info){
+			dd = {
+				footer: function(currentPage, pageCount) { 
+					var page_text = currentPage.toString() + ' of ' + pageCount
+					return {text: page_text, margin: [10, 10, 10, 10], alignment: 'right'}
+				},
+				pageOrientation: 'landscape',
+				content: [
+					{ text: info.attachment_table.value, style: 'header' },
+					{ text: ""},
+					table(c.data.table_data, c.data.table_columns) //where externalDataRetrievedFromServer is an array of objects
+				],
+				styles: {
+					header: {
+						fontSize: 18,
+						bold: true,
+						margin: [0, 0, 0, 10]
+					},
+					subheader: {
+						fontSize: 16,
+						bold: true,
+						margin: [0, 10, 0, 5]
+					},
+					tableExample: {
+						margin: [0, 5, 0, 15]
+					},
+					tableHeader: {
+						bold: true,
+						fontSize: 13,
+						fillColor: c.data.table_header_fill_color,
+						color: 'black'
+					}
+				}
+			}
+		})
+
+	}
+
+	function gettableheader() {
+		return c.data.attachment_header;
+	}
+
+
+	c.updateHeader = function(header) {
+		dd.content[0].text = header;
+		
+		if(header==""){
+			dd.content[0].text = c.data.attachment_table.displayValue;
+		}
+	}
+
+	c.updateDescription = function(description) {
+		dd.content[1].text = description;
+	}
+
+	c.updateTableFill = function(color) {
+		dd.styles.tableHeader.fillColor = color;
+	}
+
+	c.submit = function() {
+		var obj = c.data.attachment;
+		console.log(dd.styles)
+		var pdfDocGenerator = pdfMake.createPdf(dd);
+		pdfDocGenerator.getBase64(function(data){
+			c.data.base64attachment = data
+			c.data.insertAttachment = true;
+			c.server.update().then(function(){
+				$rootScope.$broadcast('attachmentSelected', c.data.attachment);
+			});
+		})
+	}
+
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>attachment_creator</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>attachment creator</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	/* populate the 'data' object */
+	/* e.g., data.table = $sp.getValue('table'); */
+	if(input){
+		for(var k in input){data[k]=input[k]};
+
+		if(data.insertAttachment) {
+			var newfile = new GlideRecord('x_174474_custompdf_pdf_details');
+			var pdf_name = data.attachment_table.value + ".pdf";
+			newfile.initialize();
+			newfile.table.display_value = data.attachment_table.value;
+			
+			newfile.attachment = pdf_name;
+			newfile.header = data.attachment_header;
+			newfile.description = data.attachment_description;
+			var custom_sys_id = newfile.insert();
+
+			//The following code adds attachemnt to the table specified
+			var attCreator = new GlideRecord('ecc_queue');
+			attCreator.agent = "AttachmentCreator";
+			attCreator.topic = "AttachmentCreator";
+			attCreator.name = "Test.pdf:application/pdf"; //For Example: Test.pdf:application/pdf 
+			attCreator.source = "x_174474_custompdf_pdf_details:"+custom_sys_id; // Record Table name and sys_id of the perticular record
+			attCreator.payload = data.base64attachment; //base64 Content of the file
+			var ecc_sys_id = attCreator.insert();
+
+			var gr_attach = new GlideRecord('sys_attachment');
+			if(gr_attach.get("table_sys_id", custom_sys_id)){
+				data.attachment.value = gr_attach.getUniqueValue();
+			}
+			
+			data.insertAttachment = false;
+			
+		} else if (data.getTableInfo) {
+			//Getting specified user list columns otherwise default
+			data.table_columns = getTableHeader(data.attachment_table.value)//gettableheader
+			data.table_data = getTableData(data.attachment_table.value);
+			//gettablerecords
+
+			data.getTableInfo = false;
+
+		}
+
+
+
+
+	} else {
+		data.attachment = {};
+		data.attachment.display_value = "";
+		data.attachment.value = "";
+
+		data.attachment_header = "";
+		data.attachment_description = "";
+
+		data.attachment_table = {};
+		data.attachment_table.display_value = "";
+		data.attachment_table.value = "";
+		
+		data.table_header_fill_color = "#eeeeff"
+
+		data.insertAttachment = false;
+		data.getTableInfo = true;
+	}
+
+
+	function getTableHeader(tableName) {
+		// get sys_ui_list table query on default view and table name
+		var user_id = gs.getUserID();
+		var layout_id = "";
+
+		var list_layout_gr = new GlideRecord("sys_ui_list");
+		list_layout_gr.addQuery("name", tableName);
+		list_layout_gr.addQuery("view", "Default view"); 
+		list_layout_gr.orderBy("sys_created_on");
+		list_layout_gr.query();
+
+		while(list_layout_gr.next()){
+			if(list_layout_gr.getValue('sys_user') == "") {
+				layout_id = list_layout_gr.getUniqueValue();
+			}
+
+			if(list_layout_gr.getValue('sys_user') == user_id) {
+				layout_id = list_layout_gr.getUniqueValue();
+			}
+		}
+		
+		//get column names 
+		var column_gr = new GlideRecord('sys_ui_list_element');
+		var column_arr = [];
+		column_gr.addQuery("list_id", layout_id);
+		column_gr.orderBy("position");
+		column_gr.query();
+		
+		while(column_gr.next()) {
+			column_arr.push({text:column_gr.getValue('element'), style:"tableHeader"});
+		}
+		
+		return column_arr;
+		//get column labels
+		/*var newForm = new GlideRecord(tableName);
+		var currentFields = [];
+		newForm.initialize();
+		for (var f in newForm) {
+			if(f.lastIndexOf('sys_')){
+				currentFields.push(f);
+			}
+		}
+		return currentFields;*/
+	}
+	
+	
+	function getTableData(tableName){
+		var arr = [];
+		var gr = new GlideRecord(tableName);
+		gr.setLimit(100);
+		gr.query();
+		
+		while (gr.next()) {
+			var obj = {};
+			for(var i=0; i<data.table_columns.length; i++) {
+				obj[data.table_columns[i].text] = gr.getDisplayValue(data.table_columns[i].text);
+			}
+			
+			arr.push(obj);	
+		}
+		
+		return arr;
+	}
+
+}
+
+
+
+
+
+)();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-10-01 21:13:31</sys_created_on>
+        <sys_id>7ee88b522f2310109f9751072799b699</sys_id>
+        <sys_mod_count>147</sys_mod_count>
+        <sys_name>attachment creator</sys_name>
+        <sys_package display_value="custompdf" source="x_174474_custompdf">8616df4a2fab98109f9751072799b6da</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="custompdf">8616df4a2fab98109f9751072799b6da</sys_scope>
+        <sys_update_name>sp_widget_7ee88b522f2310109f9751072799b699</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-10-04 23:40:34</sys_updated_on>
+        <template><![CDATA[<div>
+  <form ng-submit="c.submit()">
+    <!--<div class="form-group">
+      <label for="attachmentSelected">Select Attachment</label>
+      <sn-record-picker field="c.data.attachment" 
+                        table="'sys_attachment'" 
+                        display-field="'file_name'" 
+                        value-field="'sys_id'" 
+                        search-fields="'file_name'" 
+                        page-size="100" ></sn-record-picker>
+    </div> -->
+    
+    <div class="form-group">
+      <label for="attachmentTable">Select Table</label>
+      <sn-record-picker field="c.data.attachment_table" 
+                        table="'sys_db_object'" 
+                        display-field="'label'" 
+                        value-field="'name'" 
+                        search-fields="'name,label'"
+                        on-change="c.getTableInfo()"
+                        page-size="100" ></sn-record-picker>
+    </div>
+
+    <div class="form-group">
+      <label for="headcolor">Header Fill Color</label>
+      <input type="color" name="head" ng-model="c.data.table_header_fill_color" ng-change="c.updateTableFill(c.data.table_header_fill_color)">
+    </div>
+
+    <div class="form-group">
+      <label for="header">Header</label>
+      <input type="text" class="form-control" ng-model="c.data.attachment_header" ng-change="c.updateHeader(c.data.attachment_header)">
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea class="form-control" rows="5" id="description" ng-model="c.data.attachment_description" ng-change="c.updateDescription(c.data.attachment_description)"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+</div>]]></template>
+    </sp_widget>
+</record_update>

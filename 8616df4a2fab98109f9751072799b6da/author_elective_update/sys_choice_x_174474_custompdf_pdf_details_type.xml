@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="type" table="x_174474_custompdf_pdf_details" version="3">
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Display from existing</label>
+            <language>en</language>
+            <name>x_174474_custompdf_pdf_details</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2020-10-01 04:15:23</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>24ef9f022feb98109f9751072799b686</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2020-10-01 04:15:23</sys_updated_on>
+            <value>display_from_existing</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Display from Table</label>
+            <language>en</language>
+            <name>x_174474_custompdf_pdf_details</name>
+            <sequence/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2020-10-01 04:15:23</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>a4ef9f022feb98109f9751072799b683</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2020-10-01 04:15:23</sys_updated_on>
+            <value>display_from_table</value>
+        </sys_choice>
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>type</element>
+            <name>x_174474_custompdf_pdf_details</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2020-10-01 04:15:23</sys_created_on>
+            <sys_id>24ef9f022feb98109f9751072799b684</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>type</sys_name>
+            <sys_package display_value="custompdf" source="x_174474_custompdf">8616df4a2fab98109f9751072799b6da</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="custompdf">8616df4a2fab98109f9751072799b6da</sys_scope>
+            <sys_update_name>sys_choice_x_174474_custompdf_pdf_details_type</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2020-10-01 04:15:23</sys_updated_on>
+        </sys_choice_set>
+    </sys_choice>
+</record_update>

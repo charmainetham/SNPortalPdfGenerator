@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_dependency">
+    <sp_dependency action="DELETE">
+        <module>pdfMake</module>
+        <name>pdfMake</name>
+        <page_load>true</page_load>
+        <sp_portals/>
+        <sys_class_name>sp_dependency</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-10-03 20:40:11</sys_created_on>
+        <sys_id>4944994b2f6b50109f9751072799b608</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>pdfMake</sys_name>
+        <sys_package display_value="custompdf" source="x_174474_custompdf">8616df4a2fab98109f9751072799b6da</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="custompdf">8616df4a2fab98109f9751072799b6da</sys_scope>
+        <sys_update_name>sp_dependency_4944994b2f6b50109f9751072799b608</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-10-03 21:08:57</sys_updated_on>
+    </sp_dependency>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="custompdf">8616df4a2fab98109f9751072799b6da</application>
+        <file_path/>
+        <instance_id>eb2f46b89bb78b04bb2e6b8af359ff58</instance_id>
+        <instance_name>dev47795</instance_name>
+        <name>sp_dependency_4944994b2f6b50109f9751072799b608</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_dependency"><sp_dependency action="INSERT_OR_UPDATE"><module>pdfMake</module><name>pdfMake</name><page_load>true</page_load><sp_portals/><sys_class_name>sp_dependency</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2020-10-03 20:40:11</sys_created_on><sys_id>4944994b2f6b50109f9751072799b608</sys_id><sys_mod_count>2</sys_mod_count><sys_name>pdfMake</sys_name><sys_package display_value="custompdf" source="x_174474_custompdf">8616df4a2fab98109f9751072799b6da</sys_package><sys_policy/><sys_scope display_value="custompdf">8616df4a2fab98109f9751072799b6da</sys_scope><sys_update_name>sp_dependency_4944994b2f6b50109f9751072799b608</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2020-10-03 21:08:57</sys_updated_on></sp_dependency></record_update>]]></payload>
+        <payload_hash>-1749497904</payload_hash>
+        <record_name>pdfMake</record_name>
+        <reverted_from/>
+        <source>b913ef822feb98109f9751072799b629</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-10-03 21:08:57</sys_created_on>
+        <sys_id>5f0b95cf2f6b50109f9751072799b6aa</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>174f04bdb4e0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-10-03 21:08:57</sys_updated_on>
+        <type>Widget Dependency</type>
+        <update_guid>d70b95cfb56b5010f803288f5fe30baa</update_guid>
+        <update_guid_history>d70b95cfb56b5010f803288f5fe30baa:-1749497904,d89955cf556b5010a1f46ed8f123deb7:-427382071,3974194bae6b50109cfc6ae70089518f:-1749497904</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="pdfMake">c6ce9d832fab50109f9751072799b601</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-10-03 21:25:15</sys_created_on>
+        <sys_db_object display_value="" name="sp_dependency">sp_dependency</sys_db_object>
+        <sys_id>19e216acf5a844938cd7f83d02ae8001</sys_id>
+        <sys_metadata>4944994b2f6b50109f9751072799b608</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>pdfMake</sys_name>
+        <sys_package display_value="custompdf" source="x_174474_custompdf">8616df4a2fab98109f9751072799b6da</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="custompdf">8616df4a2fab98109f9751072799b6da</sys_scope>
+        <sys_scope_delete display_value="">004392a02fa04b70b6ff16c5288ae390</sys_scope_delete>
+        <sys_update_name>sp_dependency_4944994b2f6b50109f9751072799b608</sys_update_name>
+        <sys_update_version display_value="sp_dependency_4944994b2f6b50109f9751072799b608">5f0b95cf2f6b50109f9751072799b6aa</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-10-03 21:25:15</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
